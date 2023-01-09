@@ -1,8 +1,8 @@
 lobby:
   commands:
-    - server lobby
+    - command: server lobby
+      runas: playerr
   messages:
-  runas: player
 smp:
   commands:
     - server smp

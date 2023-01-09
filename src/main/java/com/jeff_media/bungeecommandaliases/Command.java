@@ -1,14 +1,14 @@
 package com.jeff_media.bungeecommandaliases;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.config.Configuration;
 
 import java.util.Map;
 
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
+@ToString
+@EqualsAndHashCode
 public class Command {
 
     @Getter private final String command;
@@ -22,10 +22,12 @@ public class Command {
         }
     }
 
-    public static Command fromSection(Configuration map) {
-        String command = map.getString("command");
-        CommandSenderType senderType = CommandSenderType.fromString(map.getString("sender"));
+    public static Command fromSection(Map<String,Object> map) {
+        String command = (String) map.get("command");
+        CommandSenderType senderType = CommandSenderType.fromString((String) map.get("runas"));
         return new Command(command, senderType);
     }
+
+
 
 }

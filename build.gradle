@@ -1,7 +1,9 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id "io.freefair.lombok" version "6.6.1"
+    id "com.github.johnrengelman.shadow" version "7.1.2"
 }
+
 
 group 'com.jeff_media'
 version '1.0-SNAPSHOT'
@@ -17,6 +19,17 @@ dependencies {
     compileOnly 'net.md-5:bungeecord-api:1.19-R0.1-SNAPSHOT'
 }
 
+jar {
+    dependsOn('shadowJar')
+}
+
 test {
     useJUnitPlatform()
+}
+
+task runShellScript(type: Exec) {
+    dependsOn(build)
+    workingDir "$projectDir"
+    commandLine 'bash', 'run.sh'
+    standardInput(System.in)
 }

@@ -1,0 +1,4 @@
+name: BungeeCommandAliases
+main: com.jeff_media.bungeecommandaliases.Main
+version: ${project.version}
+author: username

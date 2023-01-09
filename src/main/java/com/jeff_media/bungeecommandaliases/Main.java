@@ -26,9 +26,7 @@ public class Main extends Plugin {
     }
 
     private void loadAliases() {
-        aliases = commandsConfig.getSection("aliases").getKeys().stream().map(key -> {
-            return Alias.fromMap(commandsConfig.getSection("aliases").getSection(key));
-        }).collect(Collectors.toList());
+        aliases = commandsConfig.getKeys().stream().map(key -> Alias.fromMap(key, commandsConfig.getSection(key))).collect(Collectors.toList());
     }
 
     private void createDataFolder() {
