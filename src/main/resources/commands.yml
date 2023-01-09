@@ -1,0 +1,10 @@
+lobby:
+  commands:
+    - server lobby
+  messages:
+  runas: player
+smp:
+  commands:
+    - server smp
+  messages:
+  runas: player
